@@ -10,30 +10,13 @@ def condicionInicial(z,r,A,B):
 def condicionInicial(x,A,B):
     return A*math.exp(-(0.5-x)**2/B)
 
-#def iterar(dt,dx,Max,Min,i,Ci):
-#def iterarR(dt,dz,dr,ZMax,ZMin,RMax,RMin,i,j,Ci):
-    #alpha_ = dt/(dr**2)
-    #if(j==RMax):
-        ##print ("hola")
-        ##return Ci[i][Max]+2*alpha_*(Ci[i][Max-1]-Ci[i][Max])
-        #return 2*alpha_*(Ci[i][RMax-1]-Ci[i][RMax])
-    #elif(j==RMin):
-        ##print ("hola")
-        ##return Ci[i][Min] + 4*alpha_*(Ci[i][Min+1]-Ci[i][Min])
-        #return 4*alpha_*(Ci[i][RMin+1]-Ci[i][RMin])
-    #elif( (RMax > j ) and ( j > RMin) ):
-        ##print ("hola")
-        ##return Ci[i][j]+alpha_*((2*j+1)*Ci[i][j+1]-(4*j)*Ci[i][j]+(2*j-1)*Ci[i][j-1])/(2*j)
-        #return alpha_*((2*j+1)*Ci[i][j+1]-(4*j)*Ci[i][j]+(2*j-1)*Ci[i][j-1])/(2*j)
-    #else:
-        #print ("El indice no existe")
 def iterarR(dt,dz,dr,ZMax,ZMin,RMax,RMin,i,j,Ci):
     alpha_ = dt/(dr**2)
     if(j==RMax):
-        #print ("hola")
+        print ("[iterarR][RMax] j = %d",j)
         return 2*alpha_*(Ci[i][RMax-1]-Ci[i][RMax])
     elif(j==RMin):
-        #print ("hola")
+        print ("[iterarR][RMin] j = %d",j)
         return 4*alpha_*(Ci[i][RMin+1]-Ci[i][RMin])
     elif( (RMax > j ) and ( j > RMin) ):
         return alpha_*((2*j+1)*Ci[i][j+1]-(4*j)*Ci[i][j]+(2*j-1)*Ci[i][j-1])/(2*j)
@@ -43,12 +26,11 @@ def iterarR(dt,dz,dr,ZMax,ZMin,RMax,RMin,i,j,Ci):
 def iterarZ(dt,dz,dr,ZMax,ZMin,RMax,RMin,i,j,Ci):
     alpha_ = dt/(dz**2)
     if(i==ZMax):
+        print ("[iterarZ][ZMax] i = %d",i)
         return alpha_*(-Ci[i][j]+Ci[i-1][j])
-        #return alpha_*2*(Ci[ZMax-1][j]-Ci[ZMax][j])
     elif(i==ZMin):
-        return 0 
-        #return alpha_*(Ci[i+1][j]-Ci[i][j])
-        #return alpha_*2*(Ci[ZMin+1][j]-Ci[ZMin][j])
+        print ("[iterarZ][ZMin] i = %d",i)
+        return alpha_*(Ci[i+1][j]-Ci[i][j])
     elif( (ZMax > i ) and ( i > ZMin) ):
         return alpha_*(Ci[i+1][j]-2*Ci[i][j]+Ci[i-1][j])
     else:
