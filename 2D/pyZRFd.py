@@ -13,10 +13,10 @@ def condicionInicial(x,A,B):
 def iterarR(dt,dz,dr,ZMax,ZMin,RMax,RMin,i,j,Ci):
     alpha_ = dt/(dr**2)
     if(j==RMax):
-        print ("[iterarR][RMax] j = %d",j)
+        #print ("[iterarR][RMax] j = %d",j)
         return 2*alpha_*(Ci[i][RMax-1]-Ci[i][RMax])
     elif(j==RMin):
-        print ("[iterarR][RMin] j = %d",j)
+        #print ("[iterarR][RMin] j = %d",j)
         return 4*alpha_*(Ci[i][RMin+1]-Ci[i][RMin])
     elif( (RMax > j ) and ( j > RMin) ):
         return alpha_*((2*j+1)*Ci[i][j+1]-(4*j)*Ci[i][j]+(2*j-1)*Ci[i][j-1])/(2*j)
@@ -26,10 +26,10 @@ def iterarR(dt,dz,dr,ZMax,ZMin,RMax,RMin,i,j,Ci):
 def iterarZ(dt,dz,dr,ZMax,ZMin,RMax,RMin,i,j,Ci):
     alpha_ = dt/(dz**2)
     if(i==ZMax):
-        print ("[iterarZ][ZMax] i = %d",i)
+        #print ("[iterarZ][ZMax] i = %d",i)
         return alpha_*(-Ci[i][j]+Ci[i-1][j])
     elif(i==ZMin):
-        print ("[iterarZ][ZMin] i = %d",i)
+        #print ("[iterarZ][ZMin] i = %d",i)
         return alpha_*(Ci[i+1][j]-Ci[i][j])
     elif( (ZMax > i ) and ( i > ZMin) ):
         return alpha_*(Ci[i+1][j]-2*Ci[i][j]+Ci[i-1][j])
